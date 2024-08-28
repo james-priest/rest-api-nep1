@@ -1,0 +1,16 @@
+{
+  "name": "rest-api-nep1",
+  "version": "1.0.0",
+  "description": "REST API Using Node, Express, Postgres",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "James Priest",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}
