@@ -24,6 +24,41 @@ const getStudents = (_req, res) => {
   });
 };
 
+// GET | getStudentById()
+const getStudentById = (req, res) => {
+  const responseResult = new ResponseClass();
+  const id = req.params.id;
+  // pool.query(`SELECT * FROM students s WHERE s.id=${id};`, (error, results) => {
+  pool.query(
+    `SELECT * FROM students s WHERE s.id=$1;`,
+    [id],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      if (results.rowCount === 0) {
+        responseResult.status = true;
+        responseResult.code = 404;
+        responseResult.message = 'User not found';
+        responseResult.data = null;
+      } else {
+        responseResult.status = true;
+        responseResult.code = 200;
+        responseResult.message = 'Success';
+        responseResult.data = results.rows[0];
+      }
+      res.status(200).json(responseResult);
+    }
+  );
+};
+
+// POST | createStudent()
+
+// PUT | updateStudent()
+
+// DELETE | deleteStudent()
+
 module.exports = {
   getStudents,
+  getStudentById,
 };
