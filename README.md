@@ -47,7 +47,6 @@ Create role
 
 ```sql
 postgres=# CREATE ROLE me WITH LOGIN PASSWORD 'password';
-ALTER ROLE me CREATEDB;
 postgres=# ALTER ROLE me CREATEDB;
 ```
 
