@@ -53,6 +53,19 @@ const getStudentById = (req, res) => {
 };
 
 // POST | createStudent()
+const createStudent = (req, res) => {
+  const { firstname, lastname, origin } = req.body;
+  pool.query(
+    'INSERT INTO students (firstname, lastname, origin) VALUES ($1, $2, $3)',
+    [firstname, lastname, origin],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(201).send('Student added');
+    }
+  );
+};
 
 // PUT | updateStudent()
 
@@ -61,4 +74,5 @@ const getStudentById = (req, res) => {
 module.exports = {
   getStudents,
   getStudentById,
+  createStudent,
 };
