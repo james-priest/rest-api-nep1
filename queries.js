@@ -54,6 +54,7 @@ const getStudentById = (req, res) => {
 
 // POST | createStudent()
 const createStudent = (req, res) => {
+  const responseResult = new ResponseClass();
   const { firstname, lastname, origin } = req.body;
   pool.query(
     'INSERT INTO students (firstname, lastname, origin) VALUES ($1, $2, $3)',
@@ -62,7 +63,12 @@ const createStudent = (req, res) => {
       if (error) {
         throw error;
       }
-      response.status(201).send('Student added');
+      res.status(201).send('Student added');
+      // responseResult.status = true;
+      // responseResult.code = 201;
+      // responseResult.message = 'Student added';
+      // responseResult.data = results.rows[0];
+      // res.status(201).json(responseResult);
     }
   );
 };

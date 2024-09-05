@@ -17,4 +17,4 @@ app.get('/', (_req, res) => {
 });
 app.get('/students', db.getStudents);
 app.get('/students/:id', db.getStudentById);
-app.put('/students', db.createStudent);
+app.post('/students', db.createStudent);
