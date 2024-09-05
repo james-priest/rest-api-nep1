@@ -74,6 +74,34 @@ const createStudent = (req, res) => {
 };
 
 // PUT | updateStudent()
+const updateStudent = (request, response) => {
+  const id = parseInt(request.params.id);
+  var responseReturn = new ResponseClass();
+  try {
+    const { firstname, lastname, origin } = request.body;
+    pool.query(
+      'UPDATE students SET firstname = $1, lastname = $2, origin = $3 WHERE id = $4',
+      [firstname, lastname, origin, id],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+
+        responseReturn.status = true;
+        responseReturn.code = 200;
+        responseReturn.message = 'User updated successfully';
+        responseReturn.data = null;
+        response.status(200).send(responseReturn);
+      }
+    );
+  } catch (error) {
+    responseReturn.status = false;
+    responseReturn.code = 500;
+    responseReturn.message = error.message;
+    responseReturn.data = null;
+    response.status(500).json(responseReturn);
+  }
+};
 
 // DELETE | deleteStudent()
 
@@ -81,4 +109,5 @@ module.exports = {
   getStudents,
   getStudentById,
   createStudent,
+  updateStudent,
 };
