@@ -90,8 +90,18 @@ INSERT INTO public.students (firstname,lastname,origin) VALUES
 
 ## Usage
 
+Start node server
+
+```bash
+node index.js
+```
+
+### Endpoints
+
 Use Postman to test API endpoints
 
 - GET http://localhost/students
 - GET http://localhost/students/:id
-- PUT http://localhost/students
+- POST http://localhost/students
+- PUT http://localhost/students/:id
+- DELETE http://localhost/students/:id
