@@ -104,10 +104,20 @@ const updateStudent = (request, response) => {
 };
 
 // DELETE | deleteStudent()
+const deleteStudent = (request, response) => {
+  const id = parseInt(request.params.id);
+  pool.query('DELETE FROM students WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(201).send('Student deleted');
+  });
+};
 
 module.exports = {
   getStudents,
   getStudentById,
   createStudent,
   updateStudent,
+  deleteStudent,
 };

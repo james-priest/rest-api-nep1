@@ -19,3 +19,4 @@ app.get('/students', db.getStudents);
 app.get('/students/:id', db.getStudentById);
 app.post('/students', db.createStudent);
 app.put('/students/:id', db.updateStudent);
+app.delete('/students/:id', db.deleteStudent);
